@@ -35,12 +35,10 @@ end
 
 function fish_prompt
   pwd:set
-
   tput setaf 1
   fish_prompt:jobs
-
   tput setaf 3
-  echo MOPIDY-DAYZ
+  echo \(shell depth: $SHLVL\)\(MOPIDY-DAYZ\)
   tput sgr0
   tput setaf 6
   echo $PWD
@@ -72,4 +70,7 @@ abbr -a -g glog git log --format=fuller --first-parent --abbrev-commit
 
 abbr -a -g nb nom build
 
-set -u EDITOR v
+abbr -a -g rmf rm -rf
+abbr -a -g v nvim
+
+set -Ux NIX_ALLOW_UNFREE 1
