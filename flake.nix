@@ -33,7 +33,6 @@
             inherit text;
             inherit name;
             runtimeInputs = with pkgs; [
-              fish
               fishPlugins.fzf-fish
               nh
             ];
