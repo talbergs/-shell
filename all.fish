@@ -1,15 +1,17 @@
-set -Ux NIX_PATH nixpkgs=/home/done/Nix/vendor/nixpkgs-trunk
-
-function so
-  source /home/done/Nix/Shell/all.fish
-end
+bind \cz 'fg' # <c-k> to toggle-nvim workflow (dropshell)
+export NIX_ALLOW_UNFREE=1
 
 function pwd:set
   set -Ux LAST_PWD $PWD
+  export LAST_PWD=$PWD
 end
 
 function pwd:get
  cd $LAST_PWD
+end
+
+function fish_greeting
+    pwd:get
 end
 
 function fish_prompt:user_char
@@ -48,15 +50,9 @@ function fish_prompt
   tput sgr0
 end
 
-function fish_greeting
-    pwd:get
-end
-
 function l
     ls -lAh --full-time -s -tr $argv # -[t]imesort[r]everse
 end
-
-bind \cz 'fg' # <c-k> to toggle-nvim workflow (dropshell)
 
 abbr -a -g g git
 abbr -a -g gst git status
@@ -72,5 +68,3 @@ abbr -a -g nb nom build
 
 abbr -a -g rmf rm -rf
 abbr -a -g v nvim
-
-set -Ux NIX_ALLOW_UNFREE 1

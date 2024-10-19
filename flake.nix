@@ -18,25 +18,8 @@
       ];
       perSystem =
         { pkgs, ... }:
-        let
-          inherit (pkgs) lib;
-          name = "fish";
-          exe = lib.getExe pkgs.fish;
-          runtime = lib.strings.escapeShellArg ''
-            source ${./all.fish}
-          '';
-          init = "${exe} --init-command ${runtime}";
-          text = ''${init}'';
-        in
         {
-          packages.default = pkgs.writeShellApplication {
-            inherit text;
-            inherit name;
-            runtimeInputs = with pkgs; [
-              fishPlugins.fzf-fish
-              nh
-            ];
-          };
+          packages.default = pkgs.callPackage ./default.nix { };
         };
     };
 }
