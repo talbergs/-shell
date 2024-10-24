@@ -17,8 +17,9 @@
         "x86_64-darwin"
       ];
       perSystem =
-        { pkgs, ... }:
+        args@{ pkgs, ... }:
         {
+          packages.":comment" = pkgs.callPackage ./c_comment.nix args;
           packages.default = pkgs.callPackage ./default.nix { };
         };
     };
