@@ -2,12 +2,6 @@
   pager=delta
   eol=lf
   autocrlf=false
-[credential "https://github.com"]
-  helper=
-  helper=!gh auth git-credential
-[credential "https://gist.github.com"]
-  helper=
-  helper=!gh auth git-credential
 [delta]
   side-by-side=true
 [init]
@@ -20,8 +14,8 @@
 [push]
   default=simple
 [user]
-  email=ayatsfer@gmail.com
-  name=Fernando Ayats
+  email=martins.talbergs@zabbix.com
+  name=Martins Talbergs
 [merge]
   conflictstyle = diff3
 [diff]

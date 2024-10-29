@@ -1,17 +1,7 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
-{
-  wrappers.git = {
-    basePackage = pkgs.git;
-    env.GIT_CONFIG_GLOBAL = ./gitconfig;
-    extraPackages = [
-      pkgs.git-extras
-    ];
-    pathAdd = [
-      pkgs.delta
-    ];
-  };
+{ pkgs, ... }:
+pkgs.symlinkJoin {
+  name = "_";
+  paths = with pkgs; [ git git-extras delta ];
+  buildInputs = [ pkgs.makeWrapper ];
+  postBuild = "wrapProgram $out/bin/git --set GIT_CONFIG_GLOBAL ${./gitconfig}";
 }

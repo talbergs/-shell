@@ -1,4 +1,4 @@
-{ debug ? false,
+{ debug ? false, pkgs,
 #
 makeWrapper, makeBinaryWrapper, writeText, writeTextDir, lib, fish, symlinkJoin,
 #
@@ -6,7 +6,6 @@ fzf, starship, groff, bat, fishPlugins, any-nix-shell, callPackage,
 
 go-md2man, man-db, wget, nvim, }:
 let
-  git = callPackage ./git.nix { };
   myWrapper = if debug then makeWrapper else makeBinaryWrapper;
 
   initPlugin = plugin: ''
@@ -65,7 +64,8 @@ let
       '';
   });
 
-  extraPackages = [
+  extraPackages = (import ./packages.nix { inherit pkgs; }) ++ [
+    (import ./git.nix { inherit pkgs; })
     nvim
     go-md2man
     man-db
