@@ -6,6 +6,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    editor.url = "github:talbergs/-editor";
   };
 
   outputs =
@@ -17,10 +18,13 @@
         "x86_64-darwin"
       ];
       perSystem =
-        args@{ pkgs, ... }:
+        args@{ pkgs, system, ... }:
+	let
+	  nvim = inputs.editor.packages.${system}.default;
+	in
         {
           packages.":comment" = pkgs.callPackage ./c_comment.nix args;
-          packages.default = pkgs.callPackage ./default.nix { };
+          packages.default = pkgs.callPackage ./default.nix { inherit nvim; };
         };
     };
 }
