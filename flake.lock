@@ -29,11 +29,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1730289305,
-        "narHash": "sha256-vVpPGcR9HUjiII5coYMP/+Z9F2PwmyQN4CQaEV8vmI8=",
+        "lastModified": 1730300918,
+        "narHash": "sha256-B6KTE00PZ9qWzVmH3Bhzy1EQx0L5rnESEBMICIUz6k8=",
         "owner": "talbergs",
         "repo": "-editor",
-        "rev": "aad56482d530a2c887f6534b6a14be6637680ccd",
+        "rev": "febfe422aaf940b5792e1b6bf37118e6fa17d1a2",
         "type": "github"
       },
       "original": {
