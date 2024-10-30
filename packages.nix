@@ -1,5 +1,7 @@
 { pkgs, ... }:
-with pkgs; [
+with pkgs;
+[
+  less
   pv
   just # < A scripting dashboard
   gnupg
