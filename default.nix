@@ -1,10 +1,28 @@
-{ debug ? false, pkgs,
-#
-makeWrapper, makeBinaryWrapper, writeText, writeTextDir, lib, fish, symlinkJoin,
-#
-fzf, starship, groff, bat, fishPlugins, any-nix-shell, callPackage,
+{
+  debug ? false,
+  pkgs,
+  #
+  makeWrapper,
+  makeBinaryWrapper,
+  writeText,
+  writeTextDir,
+  lib,
+  fish,
+  symlinkJoin,
+  #
+  fzf,
+  starship,
+  groff,
+  bat,
+  fishPlugins,
+  any-nix-shell,
+  callPackage,
 
-go-md2man, man-db, wget, nvim, }:
+  go-md2man,
+  man-db,
+  wget,
+  nvim,
+}:
 let
   myWrapper = if debug then makeWrapper else makeBinaryWrapper;
 
@@ -28,7 +46,13 @@ let
     end
   '';
 
-  plugins = with fishPlugins; [ foreign-env colored-man-pages fzf bass z ];
+  plugins = with fishPlugins; [
+    foreign-env
+    colored-man-pages
+    fzf
+    bass
+    z
+  ];
 
   fish_user_config = writeText "user_config.fish" ''
     # Only source once
@@ -57,7 +81,8 @@ let
     #   ./fish-on-tmpfs.patch
     # ];
     # doCheck = false;
-    postInstall = old.postInstall
+    postInstall =
+      old.postInstall
       # echo "$(<${fish_user_config})" >> $out/etc/fish/config.fish
       + ''
         echo "source ${fish_user_config}" >> $out/etc/fish/config.fish
@@ -65,6 +90,7 @@ let
   });
 
   extraPackages = (import ./packages.nix { inherit pkgs; }) ++ [
+    (import ./c_comment.nix { inherit pkgs lib; })
     (import ./git.nix { inherit pkgs; })
     nvim
     go-md2man
@@ -87,7 +113,8 @@ let
       '';
     })
   ];
-in symlinkJoin {
+in
+symlinkJoin {
   name = with fish'; "${pname}-${version}";
   inherit (fish') pname version;
   paths = [ fish' ] ++ extraPackages;
