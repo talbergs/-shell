@@ -1,6 +1,7 @@
 { pkgs, ... }:
 with pkgs;
 [
+  zellij
   less
   pv
   just # < A scripting dashboard

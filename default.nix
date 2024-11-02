@@ -74,6 +74,9 @@ let
       ${starship}/bin/starship init fish | source
       enable_transience
     end
+
+    zellij
+    # zellij --layout.nix
   '';
 
   fish' = fish.overrideAttrs (old: {
