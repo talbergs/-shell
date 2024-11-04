@@ -23,3 +23,8 @@
 function postexec_test --on-event fish_postexec
     echo
 end
+
+if status is-interactive
+    ...
+    eval (zellij setup --generate-auto-start fish | string collect)
+end

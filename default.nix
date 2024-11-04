@@ -59,6 +59,8 @@ let
     # set -q __fish_config_sourced; and exit
     # set -gx __fish_config_sourced 1
 
+    ${lib.fileContents ./environment.fish}
+
     ${lib.concatMapStringsSep "\n" initPlugin plugins}
 
     if status is-login
