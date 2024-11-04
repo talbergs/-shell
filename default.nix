@@ -77,7 +77,7 @@ let
       enable_transience
     end
 
-    zellij
+    # zellij
     # zellij --layout.nix
   '';
 
