@@ -18,12 +18,11 @@
         "x86_64-darwin"
       ];
       perSystem =
-        args@{ pkgs, system, ... }:
-	let
-	  nvim = inputs.editor.packages.${system}.default;
-	in
+        { pkgs, system, ... }:
+        let
+          nvim = inputs.editor.packages.${system}.default;
+        in
         {
-          packages.":comment" = pkgs.callPackage ./c_comment.nix args;
           packages.default = pkgs.callPackage ./default.nix { inherit nvim; };
         };
     };

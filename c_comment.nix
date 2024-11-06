@@ -1,5 +1,7 @@
 { pkgs, lib, ... }:
+with pkgs;
 pkgs.writeScriptBin ":comment" ''
+  #!${lib.getExe bash}
   SYS_CLIPBOARD=clip.exe
   JIRAUSER=mtalbergs
   BITBUCKET_PROJECT=https://git.zabbix.com/projects/ZBX/repos/zabbix
@@ -13,7 +15,7 @@ pkgs.writeScriptBin ":comment" ''
           "$"
           "{clips[*]}"
         ]
-      }" | ${pkgs.fzf}/bin/fzf | $SYS_CLIPBOARD
+      }" | ${fzf}/bin/fzf | $SYS_CLIPBOARD
   }
   SHA="$(git rev-parse HEAD | head -c 11)"
 
