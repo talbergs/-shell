@@ -1,6 +1,7 @@
 { pkgs, ... }:
 with pkgs;
 [
+  keychain # https://www.funtoo.org/Funtoo:Keychain
   zellij
   less
   pv

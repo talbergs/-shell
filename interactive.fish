@@ -1,27 +1,46 @@
-# set -gx fish_color_normal brwhite
-# set -gx fish_color_command green
-# set -gx fish_color_keyword brblue
-# set -gx fish_color_quote yellow
-# set -gx fish_color_redirection brwhite
-# set -gx fish_color_end brred
-# set -gx fish_color_error -o red
-# set -gx fish_color_param white
-# set -gx fish_color_comment brblack
-# set -gx fish_color_selection --background=brblack
-# # set -gx fish_color_selection cyan
-# # set -gx fish_color_search_match cyan
-# set -gx fish_color_search_match --background=brblack
-# set -gx fish_color_operator green
-# set -gx fish_color_escape brblue
-# set -gx fish_color_autosuggestion brblack
-# set -gx fish_pager_color_progress brblack
-# set -gx fish_pager_color_prefix green
-# set -gx fish_pager_color_completion white
-# set -gx fish_pager_color_description brblack
+# Passphrase once.
+# eval (SHELL=fish keychain --eval --agents ssh $HOME/.ssh/id_ed25519)
 
-# Print newline after a command
-function postexec_test --on-event fish_postexec
-    echo
-end
+# if test -z (pgrep ssh-agent | string collect)
+#     eval (ssh-agent -c)
+#     set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+#     set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+# end
 
-# eval (zellij setup --generate-auto-start fish | string collect)
+# function __ssh_agent_start -d "start a new ssh agent"
+#     ssh-agent -c | sed 's/^echo/#echo/' > $SSH_ENV
+#     chmod 600 $SSH_ENV
+#     source $SSH_ENV > /dev/null
+# end
+
+# function __ssh_agent_is_started -d "check if ssh agent is already started"
+#     if test -n "$SSH_CONNECTION"
+#         # This is an SSH session
+#         ssh-add -l > /dev/null 2>&1
+#         if test $status -eq 0 -o $status -eq 1
+#             # An SSH agent was forwarded
+#             return 0
+#         end
+#     end
+
+#     if begin; test -f "$SSH_ENV"; and test -z "$SSH_AGENT_PID"; end
+#         source $SSH_ENV > /dev/null
+#     end
+
+#     if test -z "$SSH_AGENT_PID"
+#         return 1
+#     end
+
+#     ssh-add -l > /dev/null 2>&1
+#     if test $status -eq 2
+#         return 1
+#     end
+# end
+
+# if test -z "$SSH_ENV"
+#     set -xg SSH_ENV $HOME/.ssh/environment
+# end
+
+# if not __ssh_agent_is_started
+#     __ssh_agent_start
+# end
