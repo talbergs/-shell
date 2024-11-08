@@ -75,10 +75,9 @@ let
       end
       ${starship}/bin/starship init fish | source
       enable_transience
-    end
 
-    # zellij
-    # zellij --layout.nix
+      ${lib.fileContents ./skim-fzf.fish}
+    end
   '';
 
   fish' = fish.overrideAttrs (old: {

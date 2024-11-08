@@ -1,6 +1,7 @@
 { pkgs, ... }:
 with pkgs;
 [
+  skim
   keychain # https://www.funtoo.org/Funtoo:Keychain
   zellij
   less
