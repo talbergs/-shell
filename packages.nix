@@ -1,6 +1,7 @@
 { pkgs, ... }:
 with pkgs;
 [
+  odin
   skim
   keychain # https://www.funtoo.org/Funtoo:Keychain
   zellij
