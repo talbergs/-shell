@@ -55,6 +55,8 @@ with pkgs;
   zig
   avizo
   php
+  php84Packages.psysh
+  php84Packages.composer
   lua
   fuzzel
   libnotify
