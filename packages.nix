@@ -43,7 +43,7 @@ with pkgs;
   # python3Packages.jupyterlab
   # python3Packages.ipython
   # python3Packages.python-lsp-server
-  terminus-nerdfont
+  nerd-fonts.terminess-ttf
   go
   gopls
   brightnessctl
