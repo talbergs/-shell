@@ -1,6 +1,7 @@
 { pkgs, ... }:
 with pkgs;
 [
+  tailspin
   odin
   skim
   keychain # https://www.funtoo.org/Funtoo:Keychain

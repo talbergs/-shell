@@ -54,6 +54,8 @@ function l
     ls -lAh --full-time -s -tr $argv # -[t]imesort[r]everse
 end
 
+abbr -a -g +x chmod +x
+
 abbr -a -g g git
 abbr -a -g gst git status
 abbr -a -g ga git add
