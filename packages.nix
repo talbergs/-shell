@@ -1,6 +1,8 @@
 { pkgs, ... }:
 with pkgs;
 [
+  plandex
+  plandex-server
   tailspin
   odin
   skim
