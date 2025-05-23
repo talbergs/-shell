@@ -1,6 +1,7 @@
 { pkgs, ... }:
 with pkgs;
 [
+  xca # gui certificate tool
   plandex
   plandex-server
   tailspin
